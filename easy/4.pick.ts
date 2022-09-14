@@ -13,7 +13,7 @@ const todo1: TodoPreview = {
   completed: false,
 };
 
-// Solution
+// ============= Your Code Here =============
 
 type MyPick<T, K extends keyof T> = {
   [P in K]: T[P];
