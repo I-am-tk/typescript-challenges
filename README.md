@@ -8,6 +8,7 @@
 - When can we spread item in an array.
 - `[infer T, any]` inside array
 - Loop jesa check kahan pe hota he
+- difference between `extends` and `equal`
 
 ## Mistakes
 
