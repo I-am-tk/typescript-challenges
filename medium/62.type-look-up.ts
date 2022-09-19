@@ -15,8 +15,4 @@ interface Dog {
 
 type MyDogType = LookUp<Cat | Dog, "dog">; // expected to be `Dog`
 
-type LookUp<T extends { type: string }, K extends T["type"]> = T extends { type: infer I }
-  ? K extends I
-    ? T
-    : never
-  : never;
+type LookUp<T extends { type: string }, K extends T["type"]> = T extends { type: K } ? T : never;

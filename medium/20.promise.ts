@@ -9,13 +9,8 @@ const promise3 = new Promise<string>((resolve, reject) => {
 // expected to be `Promise<[number, 42, string]>`
 const p = PromiseAll([promise1, promise2, promise3] as const);
 
-type MyAwaited<T> = T extends Promise<infer X> ? X : T;
-
-declare function PromiseAll<T extends any[]>(
-  values: readonly [...T]
-): Promise<{ [P in keyof T]: MyAwaited<T[P]> }>;
-
-declare function PromiseAll2<T extends any[]>(values: readonly [...T]): Promise<MapAwaited<T>>;
+type MyAwaited<T> = T extends Promise<infer P> ? P : T;
 type MapAwaited<T extends readonly any[]> = T extends [infer F, ...infer R]
   ? [MyAwaited<F>, ...MapAwaited<R>]
   : T;
+declare function PromiseAll<T extends readonly any[]>(promises: T): Promise<MapAwaited<T>>;

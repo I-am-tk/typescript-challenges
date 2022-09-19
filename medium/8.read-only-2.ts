@@ -24,7 +24,6 @@ todo.completed = true; // OK
 //   [key in keyof T as MyExclude<keyof T, K>]: T[key];
 // } & { readonly [key in keyof T as key extends K ? K : never]: T[key] };
 
-type MyExclude<T, U extends T> = T extends U ? never : T;
 type MyOmit<T, K extends keyof T> = {
   [key in keyof T as key extends K ? never : key]: T[key];
 };
